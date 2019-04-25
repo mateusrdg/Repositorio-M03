@@ -37,5 +37,9 @@ public class Titular {
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}	
+	@Override
+	public String toString() {
+		return this.nome;
+	}
 
 }
