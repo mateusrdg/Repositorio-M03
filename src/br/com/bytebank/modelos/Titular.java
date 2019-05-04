@@ -1,14 +1,17 @@
 package br.com.bytebank.modelos;
 
-public class Titular {
+public class Titular implements Comparable<Titular>{
 	private String nome; 
 	private String CPF;
 	private String profissao;
+	private Integer id;
 	
-	public Titular (String nome, String cpf, String profissao) {
+
+	public Titular (String nome, String cpf, String profissao,Integer id) {
 		this.setNome(nome);
 		this.setCPF(cpf);
 		this.setProfissao(profissao);
+		this.setId(id);
 	}
 	
 	
@@ -36,10 +39,25 @@ public class Titular {
 	}
 	public void setCPF(String cPF) {
 		CPF = cPF;
-	}	
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return this.nome;
+		return this.id + this.nome ;
 	}
+
+	@Override
+	public int compareTo(Titular t) {	
+		return this.id.compareTo(t.id);
+	}
+	
+	
 
 }

@@ -33,7 +33,7 @@ public class Main {
 		
 		//Titular mateus = new Titular("Mateus","605.413.293-83","Programador");
 		//Titular lucas = new Titular("Lucas","605.413.293-83","Programador");
-		Titular mae = new Titular("Mae","605.413.293-83","Dona de casa");
+		Titular mae = new Titular("Mae","605.413.293-83","Dona de casa",1);
 		
 		//Conta conta1 = new ContaCorrente(1,2,mateus);
 		//Conta conta2 = new ContaPoupanca(1,2, lucas);
@@ -43,9 +43,9 @@ public class Main {
 		//conta1.saca(10);
 		//System.out.println(conta1.getSaldo());
 		
-		conta3.deposita(100);
+		conta3.deposita((double) 100);
 		try {
-			conta3.saca(200);
+			conta3.saca((double) 200);
 		} catch (Exception ex){
 			System.out.println(" aqui " + ex.getMessage());
 		}

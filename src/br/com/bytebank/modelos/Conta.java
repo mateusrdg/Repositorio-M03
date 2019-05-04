@@ -8,11 +8,11 @@ package br.com.bytebank.modelos;
 
 public abstract class Conta {
 	
-	private double saldo;
-	private int agencia;
-	private int numero;
+	private Double saldo;
+	private Integer agencia;
+	private Integer numero;
 	private Titular titular = new Titular();
-	private static int total;
+	private static Integer total;
 	
 	Conta(int agencia, int numero, Titular titular){
 		total++;
@@ -22,23 +22,23 @@ public abstract class Conta {
 		System.out.println("o total de contas é:" + total);
 	}
 	
-	public abstract void deposita (double valor);
+	public abstract void deposita (Double i);
 	
 	/**
 	 * Necessário passar um valor menor que o saldo para poder sacar
-	 * @param valor
+	 * @param i
 	 */
-	public void saca (double valor) {
-		if (this.saldo < valor) {
+	public void saca (Double i) {
+		if (this.saldo < i) {
 			throw new SaldoInsuficienteException("Saldo: " + this.getSaldo());		
 		} else {
-			this.saldo = this.getSaldo() - valor;
+			this.saldo = this.getSaldo() - i;
 		}
 		 
 	}
 
 	
-	void transfere (Conta destino, double valor) {
+	void transfere (Conta destino, Double valor) {
 		this.saca(valor);
 		destino.deposita(valor);
 	}
@@ -47,7 +47,7 @@ public abstract class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(double saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo; 
 	}
 
@@ -69,4 +69,9 @@ public abstract class Conta {
 		return ("Saldo: " + this.saldo);
 	}
 	
+	@Override
+	public boolean equals(Object conta) {
+		Conta outraconta = (Conta)conta;
+		return (this.agencia == outraconta.agencia);
+	}
 }

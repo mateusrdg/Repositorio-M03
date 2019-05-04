@@ -7,11 +7,11 @@ public class ContaCorrente  extends Conta {
 		
 	}
 	@Override
-	public void saca(double valor) {
+	public void saca(Double valor) {
 		super.saca((valor/*+ 0.2*/));
 	}
 	@Override
-	public void deposita(double valor) {
+	public void deposita(Double valor) {
 		super.setSaldo((super.getSaldo() +  valor /*+ 10*/));
 		
 	}
