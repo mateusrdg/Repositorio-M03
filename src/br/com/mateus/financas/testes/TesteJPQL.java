@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import br.com.mateus.financas.dao.ContaDao;
 import br.com.mateus.financas.modelo.Conta;
 import br.com.mateus.financas.util.JPAUtil;
 
@@ -15,15 +15,13 @@ public class TesteJPQL {
 		EntityManager em = new JPAUtil().getEntityManager();
 		Conta c = new Conta();
 		
-		c.setSaldo(new BigDecimal(230));;
+		c.setSaldo(new BigDecimal(501));;
 		
 		em.getTransaction().begin();
-		String jpql = "select c from Conta c where c.saldo > :pConta order by c.saldo";
 		
-		Query query = em.createQuery(jpql);
-		query.setParameter("pConta", c.getSaldo());
+		ContaDao dao = new ContaDao(em);
 		
-		List<Conta> resultados = query.getResultList();
+		List <Conta> resultados = dao.getContasSaldoAcima(c.getSaldo());
 		
 		for (Conta conta : resultados) {
 			System.out.println(conta.getSaldo());

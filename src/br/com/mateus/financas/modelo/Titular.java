@@ -1,11 +1,13 @@
 package br.com.mateus.financas.modelo;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,7 +25,10 @@ public class Titular {
 
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
-
+	
+	@OneToMany(mappedBy= "titular")
+	private List <Conta> Contas;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -63,6 +68,12 @@ public class Titular {
 
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+
+	public List <Conta> getContas() {
+		
+		return Contas;
 	}
 	
 }

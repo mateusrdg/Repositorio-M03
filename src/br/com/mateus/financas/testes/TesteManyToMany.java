@@ -3,10 +3,9 @@ package br.com.mateus.financas.testes;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import br.com.mateus.financas.dao.MovimentacaoContaDao;
 import br.com.mateus.financas.modelo.Categoria;
-import br.com.mateus.financas.modelo.Conta;
 import br.com.mateus.financas.modelo.MovimentacaoConta;
 import br.com.mateus.financas.util.JPAUtil;
 
@@ -16,17 +15,14 @@ public class TesteManyToMany {
 		EntityManager em = new JPAUtil().getEntityManager();
 		Categoria c = new Categoria();
 		
-		c.setId(1);
+		c.setId(4);
 		
 		em.getTransaction().begin();
-		String jpql = "select m from MovimentacaoConta m join m.categorias c where c = :pCategoria";
 		
-		Query query = em.createQuery(jpql);
-		query.setParameter("pCategoria", c);
+		MovimentacaoContaDao dao = new MovimentacaoContaDao (em);
+		List <MovimentacaoConta> movimentacoes = dao.getMovimentacoesPorCategoria(c);
 		
-		List<MovimentacaoConta> resultados = query.getResultList();
-		
-		for (MovimentacaoConta mov : resultados) {
+		for (MovimentacaoConta mov : movimentacoes) {
 			System.out.println(mov.getDescricao());
 		}
 		
