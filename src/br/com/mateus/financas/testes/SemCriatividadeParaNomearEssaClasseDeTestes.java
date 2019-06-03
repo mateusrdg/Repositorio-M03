@@ -1,6 +1,5 @@
 package br.com.mateus.financas.testes;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,27 +21,27 @@ public class SemCriatividadeParaNomearEssaClasseDeTestes {
 
 		
 		TitularDao dao = new TitularDao(em);
-		ContaDao contaDao = new ContaDao(em);
+//		ContaDao contaDao = new ContaDao(em);
 		
-//		List<Titular> todosTitulares = dao.getTitularesContas();
+		List<Titular> todosTitulares = dao.getTitularesContas();
 		
-		Titular titular = dao.getTitularPorId(1);
-		List<Conta> contas = contaDao.getContasTitular(titular);
+//		Titular titular = dao.getTitularPorId(1);
+//		List<Conta> contas = contaDao.getContasTitular(titular);
 		
 //		List<Conta> contas = contaDao.getContasSaldoAcima(new BigDecimal(500.00));
-		for (Conta conta : contas) {
-			System.out.println(conta.getSaldo());
-		}
+//		for (Conta conta : contas) {
+//			System.out.println(conta.getSaldo());
+//		}
 //		System.out.println(todosTitulares.size());
 //		
 //		
-//		for (Titular titular : todosTitulares) {
-//			System.out.println(titular.getNome());
-//			List <Conta> contas = titular.getContas();
-//			for (Conta conta : contas) {
-//				System.out.println(conta.getSaldo());
-//			}
-//		}
+		for (Titular titular : todosTitulares) {
+			System.out.println(titular.getNome());
+			List <Conta> contas = titular.getContas();
+			for (Conta conta : contas) {
+				System.out.println(conta.getSaldo());
+			}
+		}
 		
 		
 		

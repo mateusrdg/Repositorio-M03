@@ -7,11 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(query = "select distinct t from Titular t left join fetch t.Contas", 
+			name = "getTitularesContas")
+
 public class Titular {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

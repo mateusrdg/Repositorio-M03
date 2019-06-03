@@ -18,9 +18,10 @@ public class TitularDao {
 	//List<Titular> todosTitulares = ;
 
 	public List<Titular> getTitularesContas() {
-		String select = "select distinct t from Titular t left join fetch t.Contas";
+		//String select = "select distinct t from Titular t left join fetch t.Contas";
 		
-		TypedQuery <Titular> query  = em.createQuery(select, Titular.class);
+		//TypedQuery <Titular> query  = em.createQuery(select, Titular.class);
+		TypedQuery <Titular> query  =  em.createNamedQuery("getTitularesContas",Titular.class);
 		
 		return query.getResultList();
 	}
